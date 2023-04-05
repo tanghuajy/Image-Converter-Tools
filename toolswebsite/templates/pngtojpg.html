@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-BG94RBWQP6"></script> -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BG94RBWQP6');
+    </script>
+    <meta name="yandex-verification" content="ae2ac4c2ce81f5d4" />
+    <meta name="msvalidate.01" content="B0487B46A104E90209E8A3BEA24ECA0E" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8515204584571597"
+        crossorigin="anonymous"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPG to PNG Converter</title>
+
+    <meta name="description"
+        content="Best way to convert your PNG to JPG file in seconds. 100% free, secure and easy to use! This free online tool converts your PNG images to JPG format.">
+    <meta name="keywords"
+        content="png to jpg transparent,png to pdf converter,png to jpg converter free download,png to jpg signature,png to jpg i love pdf,jpg to png converter software,online converter,png to jpg">
+    <!-- <link rel="icon" type="image/png" href="/favicon"> -->
+    <!-- <link rel="canonical" href="https://tools.pythonanywhere.com/jpgtopng"> -->
+
+    <link rel="stylesheet" href="https://mnick-yt.github.io/yt.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://mnick-yt.github.io/mystyle.css">
+    <!-- <meta name="geo.region" content="US-CA" />
+    <meta name="geo.placename" content="California" />
+    <meta name="geo.position" content="37.431798;-122.170550" />
+    <meta name="ICBM" content="37.431798, -122.170550" />
+    <meta name="author" content="MNick" /> -->
+
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Tools</a>
+                <div class="dropdown-content">
+                    <a href="/jpgtopng">JPG to PNG</a>
+                    <a href="/pngtojpg">PNG to JPG</a>
+                    <a href="/bmptopng">BMP to PNG</a>
+                    <a href="/pngtopdf">PNG to PDF</a>
+                    <a href="/webptopng">WEBP to PNG</a>
+                    <!-- <a href="/jpgtopdf">JPG to PDF</a> -->
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <!---------------------------------------------->
+    <main>
+
+        <div class="container">
+
+            <header>PNG to JPG converter</header>
+            <form onsubmit="convertToPNG(event)" id="form">
+                <div id="select-area">
+                    <input type="file" id="inputImage" accept="image/png" class="file-input" name="file" hidden>
+                    <i class="fas fa-file-image"></i>
+                    <p>Select PNG</p>
+
+                </div>
+                <div class="preview">
+                    <img id="file-preview">
+                    <i class="fas fa-trash" id="remove-img"></i>
+                </div>
+                <div class="btn-div">
+                    <button class="btn-converter" type="submit">Convert to JPG</button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <div class="footer">
+
+        <a href="/">Home</a>
+        <a href="/about">About US</a>
+        <a href="/contactus">Contact Us</a>
+        <a href="/privacypolicy">Privacy Policy</a>
+        <p>&copy; Copyright 2023 IanTang</p>
+
+    </div>
+
+    <script>
+
+        function convertToPNG(event) {
+            event.preventDefault();
+
+            const inputElement = document.getElementById('inputImage');
+            const file = inputElement.files[0];
+
+            if (!file) {
+                alert('Please select an image.');
+                return;
+            }
+
+            if (file.type !== 'image/png') {
+                alert('Please select a PNG image.');
+                return;
+            }
+
+            if (file.size > 5 * 1024 * 1024) {
+                alert('Image size should be less than 5 MB.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+            fetch('/api/pngtojpg', {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                // Handle response from server
+                // 处理服务器响应
+                if (response.ok) {
+                    return response.blob();
+                } else {
+                    // Log the error message
+                    return response.text().then(text => {
+                        console.error('Error message:', text);
+                        alert('Failed to convert image');
+                    });
+                }
+            }).then(blob => {
+                // 用 Blob 对象创建 URL
+                const url = URL.createObjectURL(blob);
+                // 创建一个下载链接
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'converted_image.jpg';
+                // 触发点击事件以下载文件
+                a.click();
+                // 释放 URL 对象
+                URL.revokeObjectURL(url);
+                alert("Image converted successfully!");
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+    </script>
+    <script src="https://mnick-yt.github.io/script.js"> </script>
+
+</body>
+
+</html>

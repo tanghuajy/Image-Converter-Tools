@@ -1,0 +1,102 @@
+/* 顶部导航栏样式 */
+ul {
+  list-style-type: none; /* 列表项样式设为无 */
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* 隐藏溢出的内容 */
+  background-color: #603280;
+}
+
+/* 导航栏中的列表项样式 */
+li {
+  float: left; /* 让列表项向左浮动 */
+  font-size: 20px;
+}
+
+/* 导航栏中的链接和下拉按钮样式 */
+li a, .dropbtn {
+  display: inline-block; /* 设置为内联块元素 */
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none; /* 删除文本下划线 */
+}
+
+/* 鼠标悬停在导航栏链接和下拉按钮上时的样式 */
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: #9562b6;
+}
+
+/* 下拉菜单样式 */
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none; /* 默认情况下，内容不显示 */
+  position: absolute;  /* 使用绝对定位 */
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* 盒子阴影 */
+  z-index: 1; /* 层级 */
+}
+
+/* 下拉菜单中的链接样式 */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left; /* 文本左对齐 */
+}
+
+/* 鼠标悬停在下拉菜单链接上时的样式 */
+.dropdown-content a:hover {background-color: #f1f1f1;} /* 鼠标悬停时的背景颜色 */
+
+/* 鼠标悬停在下拉菜单上时显示下拉内容 */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* 文本区域样式 */
+.text-div p {
+  padding-left: 50px; /* 左内边距 */
+  padding-right: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.text-div h2{
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  color: #603280;
+}
+
+.text-div a{
+  color: #603280;
+  font-size: 18px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/* 页脚样式 */
+.footer{
+  padding-top: 10px; /* 顶部内边距 */
+  background-color: #603280;
+  height: 55px;
+  text-align: center;
+}
+
+/* 页脚链接样式 */
+.footer a{
+  color: white;
+  text-decoration: none;
+  padding-right: 20px;
+}
+
+/* 页脚文本样式 */
+.footer p{
+  color: white;
+  padding-top: 5px;
+}
